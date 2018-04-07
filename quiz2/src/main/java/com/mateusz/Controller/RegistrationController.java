@@ -29,7 +29,7 @@ public class RegistrationController {
         String password = request.getParameter("password");
         String password2 = request.getParameter("password2");
 
-        if(login.length() >5 && login.length() < 10
+        if(login.length() > 5 && login.length() < 10
                 && password.length() >5 && password.length() < 15
                 && password.equals(password2)) {
             user.setLogin(login);

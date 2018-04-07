@@ -3,6 +3,7 @@ package com.mateusz.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
 public class Question {
@@ -13,6 +14,7 @@ public class Question {
     private String question;
     private String answerOne;
     private String answerTwo;
+    private String answerThree;
     private String answerFour;
     private String trueAnswer;
 
@@ -20,10 +22,11 @@ public class Question {
 
     }
 
-    public Question(String question, String answerOne, String answerTwo, String answerFour, String trueAnswer) {
+    public Question(String question, String answerOne, String answerTwo, String answerThree, String answerFour, String trueAnswer) {
         this.question = question;
         this.answerOne = answerOne;
         this.answerTwo = answerTwo;
+        this.answerThree = answerThree;
         this.answerFour = answerFour;
         this.trueAnswer = trueAnswer;
     }
@@ -58,6 +61,14 @@ public class Question {
 
     public void setAnswerTwo(String answerTwo) {
         this.answerTwo = answerTwo;
+    }
+
+    public String getAnswerThree() {
+        return answerThree;
+    }
+
+    public void setAnswerThree(String answerThree) {
+        this.answerThree = answerThree;
     }
 
     public String getAnswerFour() {
