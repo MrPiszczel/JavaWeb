@@ -1,7 +1,7 @@
 package com.mateusz.Controller;
 
 import com.mateusz.model.User;
-import com.mateusz.repository.UserRepository;
+import com.mateusz.service.RegistrationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 public class RegistrationController {
 
     @Autowired
-    private UserRepository userRepository;
+    private RegistrationServiceImpl registrationServiceImpl;
 
     @RequestMapping("/join")
     public String join(){
@@ -29,19 +29,13 @@ public class RegistrationController {
         String password = request.getParameter("password");
         String password2 = request.getParameter("password2");
 
-        if(login.length() > 5 && login.length() < 10
-                && password.length() >5 && password.length() < 15
-                && password.equals(password2)) {
-            user.setLogin(login);
-            user.setPassword(password);
-            user.setPassword2(password2);
-            userRepository.save(user);
-        }else if(login.length() <5 || login.length() > 10
-                ||  password.length() < 5 || password.length() > 15
-                || !password.equals(password2)){
-            return "loginError";
-        }
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setPassword2(password2);
 
+        if(!registrationServiceImpl.save(user, login, password, password2)){
+          return "loginError";
+        }
 
         return "index";
     }

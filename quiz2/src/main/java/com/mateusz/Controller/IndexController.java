@@ -24,12 +24,7 @@ public class IndexController {
     @RequestMapping("/")
     public String index(Model model, HttpServletRequest request) {
 
-      // List<Question> listQuestion = questionRepository.findAllQuestions();
-
-      // System.out.println(listQuestion);
-
         return "index";
     }
 
-    
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset=“UTF-8” />
 
     <title>spring mvc</title>
 </head>
@@ -9,8 +9,12 @@
 Wellcome <p th:text="${userLogin}"></p>
 
 <form action="addQuestion">
-    <input type="submit" value="Add Question">
+    <input type="submit" value="Create Question">
 </form>
+
+<h2>Questions</h2>
+<a href="#" th:each="q : ${questions}" th:text="${q.question} "
+th:href="@{/questions/view/{id}/(id=${q.id})}"></a><br/>
 
 </body>
 </html>

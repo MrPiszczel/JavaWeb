@@ -10,9 +10,11 @@
 <body>
 <h1>Quiz Application</h1>
 
+Now is: <b th:text="${execInfo.now.time}"></b>
+
 <div id=loginDiv>
 
-<form action="login">
+<form  th:action="@{/login}">
     <input type="text" name="login"><br/>
     <input type="text" name="password"><br/>
     <input type="submit" value="Login">
