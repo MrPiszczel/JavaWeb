@@ -13,8 +13,8 @@ Wellcome <p th:text="${userLogin}"></p>
 </form>
 
 <h2>Questions</h2>
-<a href="#" th:each="q : ${questions}" th:text="${q.question} "
-th:href="@{/questions/view/{id}/(id=${q.id})}"></a><br/>
+<a href="#" th:each="q : ${questions}" th:text="${q.question}"
+th:href="@{/questions/view/{id}/(id=${q.id})}" ></a>
 
 </body>
 </html>

@@ -18,9 +18,9 @@ public class MailSender {
 
             props.put("mail.smtp.host", host);
             props.put("mail.smtp.auth", "true");
-            props.put("mail.smtp.port", "587"); //465
+            props.put("mail.smtp.port", "465"); //465
             props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.socketFactory.port", "587");
+            props.put("mail.smtp.socketFactory.port", "465");
             props.put("mail.smtp.socketFactory.fallback", "false");
 
 

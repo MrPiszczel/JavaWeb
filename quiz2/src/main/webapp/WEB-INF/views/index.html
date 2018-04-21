@@ -16,44 +16,19 @@ Now is: <b th:text="${execInfo.now.time}"></b>
 
 <form  th:action="@{/login}">
     <input type="text" name="login"><br/>
-    <input type="text" name="password"><br/>
+    <input type="password" name="password"><br/>
     <input type="submit" value="Login">
 </form>
 
-<form action="join">
+<form  action="join">
     <input type="submit" value="Join To Us">
 </form>
 </div>
 
-<div id="emailDiv"></div>
-<form action="mail">
-    <table>
-        <tr>
-        <td align="right"><b>To :</b></td>
-            <td>
-            <input type="text" name="email" size="75">
-            </td>
-        </tr>
-        <tr>
-            <td align="right"><b>Subject :</b></td>
-            <td>
-                <input type="text" name="subject" size="75">
-            </td>
-        </tr>
-        <tr>
-            <td align="right"><b>Message :</b></td>
-            <td>
-                <textarea name="message" cols="75" rown="6"></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <input type="submit" value="Send">
-            </td>
-        </tr>
-    </table>
-</form>
+<a  th:href="@{/email}">Email</a>
+
+
+
 </div>
 
 </body>

@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset=?UTF-8?>
+    <meta charset="UTF-8">
 
     <title>spring mvc</title>
 </head>
 <body>
 
-<p th:utext="${question.id}" th:name="a"></p>
+<form action="main">
+    <table>
+        <tr>
+            <td>Question: </td>
+             <td th:text="${question.question}"></td>
+        </tr>
+        <tr>
+            <td>Answer A:</td>
+            <td th:text="${question.answerOne}"></td>
+        </tr>
+        <tr>
+            <td>Anser B:</td>
+            <td th:text="${question.answerTwo}"></td>
+        </tr>
+        <tr>
+            <td>Answer C:</td>
+            <td th:text="${question.answerThree}"></td>
+        </tr>
+        <tr>
+            <td>Answer D:</td>
+            <td th:text="${question.answerFour}"></td>
+        </tr>
+        <tr>
+            <td>Your Answer: </td>
+            <td>
+            <select name="${question.trueAnswer}">
+                <option>A</option>
+                <option>B</option>
+                <option>B</option>
+                <option>B</option>
+            </select>
+            </td>
+        </tr>
+    </table>
 
-<form action="To-Do">
-    Question: <p th:utext="${question.question}" th:name="b"></p>
-    Answer A: <p th:utext="${question.answerOne}" th:name="c"></p>
-    Answer B: <p th:utext="${question.answerTwo}" th:name="d"></p>
-    Answer C: <p th:utext="${question.answerThree}" th:name="e"></p>
-    Answer D: <p th:utext="${question.answerFour}" th:name="f"></p>
-    Your answer
-    <select name="${question.trueAnswer}">
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
-        <option>D</option>
-    </select>
     <input type="submit" value="Accept">
 
 </form>

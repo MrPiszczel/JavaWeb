@@ -43,4 +43,8 @@ dependencies {
     compile group: 'jstl', name: 'jstl', version: '1.2'
 
     compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+
+    compile group: 'org.springframework.security', name: 'spring-security-web', version: '5.0.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '5.0.4.RELEASE'
+    compile group: 'org.springframework.security', name: 'spring-security-config', version: '5.0.4.RELEASE'
 }

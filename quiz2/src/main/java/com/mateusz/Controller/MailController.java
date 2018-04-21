@@ -1,6 +1,7 @@
 package com.mateusz.Controller;
 
 import com.mateusz.Email.MailSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,11 +19,15 @@ import java.util.Properties;
 @Controller
 public class MailController {
 
-
     private static MailSender mailSender;
 
-    @RequestMapping("mail")
-    public String mail(HttpServletRequest request) throws ServletException, IOException{
+    @RequestMapping("/email")
+    public String mail(){
+        return "email";
+    }
+
+    @RequestMapping("/mail")
+    public String email(HttpServletRequest request) throws ServletException, IOException{
 
         String toEmail = request.getParameter("email");
         String subject = request.getParameter("subject");
@@ -32,7 +37,7 @@ public class MailController {
         String userName = "javatestmati";
         String password = "M@tiJavaTest19";
 
-        System.out.println(fromEmail+ " " + userName+ " " + password+ " " + toEmail + " " + subject+ " " + text);
+       // System.out.println(fromEmail+ " " + userName+ " " + password+ " " + toEmail + " " + subject+ " " + text);
 
         String host = "smtp.gmail.com";
 
@@ -40,7 +45,7 @@ public class MailController {
 
         props.put("mail.smtp.host", host);
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.port", "465"); //465
+        props.put("mail.smtp.port", "465");
         props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.fallback", "false");
@@ -56,10 +61,10 @@ public class MailController {
         try {
             MimeMessage message =new MimeMessage(session);
 
-            //email z ktorego wysylam wiadomosc
+           // email z ktorego wysylam wiadomosc
             message.setFrom(new InternetAddress(fromEmail));
 
-            //e-mail tam gdzie bede wysylal
+            // e-mail tam gdzie bede wysylal
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail));
 
             //temat wiadomosci
@@ -68,7 +73,7 @@ public class MailController {
             //tresc wiadomosci
             message.setText(text);
 
-            System.out.println("Tresc wiadomosci tp" + message);
+           System.out.println("Tresc wiadomosci tp" + message);
 
             //wysylanie wiadomosci
             Transport.send(message);
@@ -79,7 +84,7 @@ public class MailController {
             throw new RuntimeException(e);
         }
 
-        //mailSender.sendEmail(fromEmail, userName, password, toEmail, subject, message);
+      //  mailSender.sendEmail(fromEmail, userName, password, toEmail, subject, text);
 
         return "index";
     }
