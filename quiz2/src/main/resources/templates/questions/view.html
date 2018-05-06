@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>spring mvc</title>
+</head>
+<body>
+
+<form action="main">
+    <table>
+        <tr>
+            <td>Question: </td>
+             <td th:text="${question.question}"></td>
+        </tr>
+        <tr>
+            <td>Answer A:</td>
+            <td th:text="${question.answerOne}"></td>
+        </tr>
+        <tr>
+            <td>Anser B:</td>
+            <td th:text="${question.answerTwo}"></td>
+        </tr>
+        <tr>
+            <td>Answer C:</td>
+            <td th:text="${question.answerThree}"></td>
+        </tr>
+        <tr>
+            <td>Answer D:</td>
+            <td th:text="${question.answerFour}"></td>
+        </tr>
+        <tr>
+            <td>Your Answer: </td>
+            <td>
+            <select name="${question.trueAnswer}">
+                <option>A</option>
+                <option>B</option>
+                <option>C</option>
+                <option>D</option>
+            </select>
+            </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Accept">
+
+</form>
+</body>
+</html>

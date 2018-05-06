@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset=“UTF-8” />
+
+    <title>spring mvc</title>
+</head>
+<body>
+Wellcome <p th:text="${userLogin}"></p>
+
+<form action="addQuestion">
+    <input type="submit" value="Create Question">
+</form>
+
+<h2>Questions</h2>
+
+
+<a href="#" th:each="q : ${questions}"   th:text="${q.question} "
+   th:href="@{/questions/view/{id}/(id=${q.id})}"><br/></a>
+
+
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out" />
+</form>
+</body>
+</html>

@@ -9,6 +9,7 @@ import java.util.Properties;
 
 public class MailSender {
 
+
     public void sendEmail(String fromEmail, String username, String password, String toEmail, String subject, String text){
 
 

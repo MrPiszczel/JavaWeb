@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title>spring mvc</title>
+</head>
+<body>
+
+<div th:if="${param.error}">
+    <p>Login or password is wrong</p>
+</div>
+
+<form  th:action="@{/login}" method="post">
+
+    <div class="form-group">
+        <label for="username">Login: </label>
+        <input type="text" class="form-control" id="username"  placeholder="Enter unsername" name="username"
+               ><br/>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Passord: </label>
+        <input type="password"  id="password" placeholder="Enter Password" name="password"
+               class="form-control"><br/>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+</form>
+
+</body>
+</html>
+

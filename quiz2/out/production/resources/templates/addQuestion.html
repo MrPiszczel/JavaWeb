@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset=?UTF-8?>
+
+    <title>spring mvc</title>
+</head>
+<body>
+
+<!--<form th:action="main" th:method="get">-->
+<form th:href="main">
+   Question: <input type="text" name="question"><br/>
+   Answer A: <input type="text" name="answerA"><br/>
+   Answer B: <input type="text" name="answerB"><br/>
+   Answer C: <input type="text" name="answerC"><br/>
+   Answer D: <input type="text" name="answerD"><br/>
+   Your answer
+    <select name="trueAnswer">
+       <option>A</option>
+        <option>B</option>
+        <option>C</option>
+        <option>D</option>
+    </select>
+   <input type="submit" value="Accept">
+
+</form>
+
+</body>
+</html>

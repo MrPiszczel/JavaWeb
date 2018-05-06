@@ -2,6 +2,7 @@ package com.mateusz.service;
 
 import com.mateusz.model.Question;
 import com.mateusz.repository.QuestionRepository;
+import com.mateusz.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,8 @@ public class QuestionServiceImpl implements QuestionService{
 
     @Autowired
     private QuestionRepository questionRepository;
+
+
 
    @Override
    public List<Long> findLatest2() {

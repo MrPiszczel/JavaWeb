@@ -1,43 +1,36 @@
 package com.mateusz.model;
 
+
+
+import org.hibernate.annotations.ColumnDefault;
+
+
 import javax.persistence.*;
-import java.util.Set;
+import javax.validation.Constraint;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import java.util.List;
 
 
 @Entity
+@Table(name="users")
 public class User {
 
     @Id
-    @GeneratedValue
-    private Long id;
-    private String login;
+    private String username;
+
     private String password;
-    private String password2;
 
     public User() {
 
     }
 
-    public User(String login, String password, String password2) {
-        this.login = login;
-        this.password = password;
-        this.password2 = password2;
+    public String getUsername() {
+        return username;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -46,13 +39,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
     }
 }
