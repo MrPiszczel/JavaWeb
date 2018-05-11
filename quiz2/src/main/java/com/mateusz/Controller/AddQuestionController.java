@@ -3,11 +3,14 @@ package com.mateusz.Controller;
 
 import com.mateusz.model.Question;
 import com.mateusz.repository.QuestionRepository;
+import com.mateusz.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 public class AddQuestionController {
@@ -15,13 +18,17 @@ public class AddQuestionController {
     @Autowired
     private QuestionRepository questionRepository;
 
+    @Autowired
+    private QuestionService questionService;
+
     @RequestMapping("/addQuestion")
     public String addQuestion(){
        return "addQuestion";
     }
 
+
     @RequestMapping("/saveQuestion")
-    public String saveQuestion(HttpServletRequest request) {
+    public String saveQuestion(HttpServletRequest request, Model model) {
 
         Question questions = new Question();
 
@@ -40,6 +47,9 @@ public class AddQuestionController {
         questions.setTrueAnswer(trueAnswer);
 
         questionRepository.save(questions);
+
+        List<Question> writeQuestions = questionService.findAllQuestions();
+        model.addAttribute("questions", writeQuestions);
 
         return "main";
     }

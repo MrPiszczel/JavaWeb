@@ -7,8 +7,8 @@
 </head>
 <body>
 
-<!--<form th:action="main" th:method="get">-->
-<form th:href="main">
+<form th:action="@{saveQuestion}" th:method="post">
+
    Question: <input type="text" name="question"><br/>
    Answer A: <input type="text" name="answerA"><br/>
    Answer B: <input type="text" name="answerB"><br/>
@@ -21,7 +21,7 @@
         <option>C</option>
         <option>D</option>
     </select>
-   <input type="submit" value="Accept">
+   <input  type="submit" value="Accept">
 
 </form>
 

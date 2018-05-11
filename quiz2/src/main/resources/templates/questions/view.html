@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<form action="main">
+<form th:action="@{/main}" method="post">
     <table>
         <tr>
             <td>Question: </td>
@@ -18,7 +18,7 @@
             <td th:text="${question.answerOne}"></td>
         </tr>
         <tr>
-            <td>Anser B:</td>
+            <td>Answer B:</td>
             <td th:text="${question.answerTwo}"></td>
         </tr>
         <tr>

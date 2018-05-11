@@ -14,10 +14,17 @@ Wellcome <p th:text="${userLogin}"></p>
 
 <h2>Questions</h2>
 
+<a th:name="${username}"></a>
 
-<a href="#" th:each="q : ${questions}"   th:text="${q.question} "
-   th:href="@{/questions/view/{id}/(id=${q.id})}"><br/></a>
 
+<!--<a href="#" th:each="q : ${questions}"   th:text="${q.question} "-->
+   <!--th:href="@{/questions/view/{id}/(id=${q.id})}"><br/></a>-->
+
+<table th:each="q: ${questions}">
+    <tr>
+        <a href="#" th:href="@{/questions/view/{id}/(id=${q.id})}" th:text="'Question ' + ${q.id}">Question</a>
+    </tr>
+</table>
 
 
 <form th:action="@{/logout}" method="post">
