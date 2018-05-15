@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class RegistrationController {
@@ -33,6 +31,7 @@ public class RegistrationController {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
+        user.setPoints(0);
 
         Role role = new Role();
         role.setRole("ROLE_USER");

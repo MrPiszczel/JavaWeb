@@ -9,8 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -22,7 +20,6 @@ public class RegistrationServiceImpl implements RegistrationService{
     @Autowired
     private RoleRepository roleRepository;
 
-
     public boolean save(User user, String login, String password, String password2, Role role){
 
         if(login.length() > 5 && login.length() < 10
@@ -32,6 +29,8 @@ public class RegistrationServiceImpl implements RegistrationService{
 
             userRepository.save(user);
             roleRepository.save(role);
+
+
             return true;
         }else if(login.length() <5 || login.length() > 10
                 ||  password.length() < 5 || password.length() > 15
@@ -42,8 +41,11 @@ public class RegistrationServiceImpl implements RegistrationService{
     }
 
     @Override
-    public List<User> findAll() {
-        return null;
+    public List<User> findAllUsers() {
+
+        List<User> user = userRepository.findAllUsers();
+
+        return user;
     }
 
     @Override

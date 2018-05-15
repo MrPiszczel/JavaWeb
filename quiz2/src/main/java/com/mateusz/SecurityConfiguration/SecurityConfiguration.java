@@ -35,13 +35,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("select username,password, 1 as enabled from users where username=?")
                 .authoritiesByUsernameQuery("select username, role from user_roles where username=?");
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/", "/email", "/join", "/registration", "/index").permitAll()
+        http.authorizeRequests().antMatchers("/", "/email","/mail", "/join", "/registration", "/index").permitAll()
                 .antMatchers( "/addQuestion", "/saveQuestion", "/questions/**", "/main").hasRole("USER")
-                .anyRequest().authenticated().and().formLogin().loginPage("/login").permitAll().and().logout()
+                .anyRequest().authenticated().and().formLogin().loginPage("/login").defaultSuccessUrl("/main", true).permitAll().and().logout()
                 .permitAll();
     }
 

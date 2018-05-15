@@ -21,8 +21,18 @@ public class User {
 
     private String password;
 
+    private int points;
+
     public User() {
 
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
     }
 
     public String getUsername() {

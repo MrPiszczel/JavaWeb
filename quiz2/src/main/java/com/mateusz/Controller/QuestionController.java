@@ -19,6 +19,8 @@ public class QuestionController {
         Question question = questionService.findById(id); // to change
         model.addAttribute("question", question);
 
+
+
         return "questions/view";
     }
 }

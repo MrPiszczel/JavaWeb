@@ -7,11 +7,15 @@
 </head>
 <body>
 
-<form th:action="@{/main}" method="post">
+<form th:action="@{/main}" method="get">
     <table>
         <tr>
-            <td>Question: </td>
-             <td th:text="${question.question}"></td>
+            <td>
+                <a>Question: </a>
+            </td>
+            <td>
+                <input type="text" name="question" th:value="${question.question}">
+            </td>
         </tr>
         <tr>
             <td>Answer A:</td>
@@ -32,7 +36,7 @@
         <tr>
             <td>Your Answer: </td>
             <td>
-            <select name="${question.trueAnswer}">
+            <select name="trueAnswer" >
                 <option>A</option>
                 <option>B</option>
                 <option>C</option>

@@ -1,6 +1,7 @@
 package com.mateusz.Controller;
 
 import com.mateusz.Email.MailSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,6 +19,7 @@ import java.util.Properties;
 @Controller
 public class MailController {
 
+    @Autowired
     private static MailSender mailSender;
 
     @RequestMapping("/email")
@@ -26,7 +28,7 @@ public class MailController {
     }
 
     @RequestMapping("/mail")
-    public String email(HttpServletRequest request) throws ServletException, IOException{
+    public String email(HttpServletRequest request){
 
         String toEmail = request.getParameter("email");
         String subject = request.getParameter("subject");
@@ -83,7 +85,7 @@ public class MailController {
             throw new RuntimeException(e);
         }
 
-      //  mailSender.sendEmail(fromEmail, userName, password, toEmail, subject, text);
+//        mailSender.sendEmail(fromEmail, userName, password, toEmail, subject, text, session);
 
         return "index";
     }
