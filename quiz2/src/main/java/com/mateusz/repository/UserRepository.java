@@ -13,4 +13,7 @@ public interface UserRepository extends JpaRepository<User, String> {
 
     @Query(value="select e from User e")
     List<User> findAllUsers();
+
+    @Query(value="select Upper(e.points) from User e")
+    List<String> findUserPoints();
 }

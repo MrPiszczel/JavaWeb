@@ -34,6 +34,8 @@ public class LoginController {
     @RequestMapping("/main")
     public String main(Model model, HttpServletRequest request){
 
+
+
         List<Long> idQuestion = questionService.findLatest2();
         model.addAttribute("idQuestion", idQuestion);
 
@@ -48,22 +50,25 @@ public class LoginController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         model.addAttribute("username", name);
+        int point = registrationService.findUserPoints(name);
+        model.addAttribute("points", point);
 
         String trueAnswer = request.getParameter("trueAnswer");
-        System.out.println("aaaaaaaaaaaaaaaa " + trueAnswer);
-
         String question = request.getParameter("question");
-        System.out.println("aaaaaaaaaaaaaaaa " + question);
 
         for(Question q: questions){
+
             if(q.getQuestion().equals(question) && q.getTrueAnswer().equals(trueAnswer)){
                 for(User u: users){
                     if(u.getUsername().equals(name)){
                         int points = u.getPoints() + 2;
+
+                        boolean answerT = true;
+                        model.addAttribute("answer", answerT);
+
                         u.setPoints(points);
                         userRepository.save(u);
 
-                        model.addAttribute("points", points);
                     }
                 }
 

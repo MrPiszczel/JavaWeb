@@ -11,4 +11,5 @@ public interface RegistrationService {
     public User findUserByLogin(String login);
     public void saveUser(User user);
 
+    int findUserPoints(String name);
 }

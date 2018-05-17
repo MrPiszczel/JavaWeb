@@ -26,10 +26,8 @@ public class RegistrationServiceImpl implements RegistrationService{
                 && password.length() >5 && password.length() < 15
                 && password.equals(password2)) {
 
-
             userRepository.save(user);
             roleRepository.save(role);
-
 
             return true;
         }else if(login.length() <5 || login.length() > 10
@@ -60,6 +58,21 @@ public class RegistrationServiceImpl implements RegistrationService{
 
     @Override
     public void saveUser(User user) {
-
     }
+
+    @Override
+    public int findUserPoints(String name){
+        int number=0;
+
+        List<User> user = userRepository.findAllUsers();
+
+        for(User u: user){
+            if(u.getUsername().equals(name)){
+                number = u.getPoints();
+                return number;
+            }
+        }
+        return number;
+    }
+
 }

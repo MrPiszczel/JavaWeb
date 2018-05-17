@@ -9,17 +9,17 @@
 Wellcome <a th:text="${username}"></a><br/>
 Your Points <a th:text="${points}"></a>
 
+<div th:if="${answer}">
+    <a>This is true answer. You get 2 points.</a>
+</div>
+
+
+
 <form action="addQuestion">
     <input type="submit" value="Create Question">
 </form>
 
 <h2>Questions</h2>
-
-
-
-
-<!--<a href="#" th:each="q : ${questions}"   th:text="${q.question} "-->
-   <!--th:href="@{/questions/view/{id}/(id=${q.id})}"><br/></a>-->
 
 <table th:each="q: ${questions}">
     <tr>
