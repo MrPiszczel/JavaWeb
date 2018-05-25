@@ -13,7 +13,7 @@ Hello!
 
 <table border="1" width="350">
     <tr>
-        <td width="50" valign="top" >
+        <td width="50" valign="top">
             <a>Id</a>
         </td>
         <td width="200">
@@ -23,18 +23,22 @@ Hello!
             <a>Scored</a>
         </td>
     </tr>
-    <tr>
-        <td width="50">
-            <a>1</a>
-        </td>
-        <td width="200">
+    <tr th:each="movie: ${allMovie}">
+        <td width="50" th:text="${movie.id}">
 
         </td>
-        <td width="100">
+        <td width="200" th:text="${movie.name}">
+
+        </td>
+        <td width="100" th:text="${movie.rate}">
 
         </td>
     </tr>
 </table>
+
+<form action="addMovie">
+    <input type="submit" value="add movie">
+</form>
 
 </body>
 </html>
