@@ -14,11 +14,17 @@ public class MovieServiceImpl implements MovieService {
     private MovieRepository movieRepository;
 
 
-    public void save(String name, int rate) {
+    public void save(String name, int rate, String status) {
         Movie movie = new Movie();
         movie.setName(name);
         movie.setRate(rate);
+        movie.setStatus(status);
 
+        movieRepository.save(movie);
+    }
+
+    @Override
+    public void save2(Movie movie) {
         movieRepository.save(movie);
     }
 
@@ -28,4 +34,28 @@ public class MovieServiceImpl implements MovieService {
 
         return allMovies;
     }
+
+    @Override
+    public Movie findById(int id) {
+       List<Movie> allMovie = movieRepository.findAllMovies();
+
+       for(Movie selectMovie: allMovie){
+           if(selectMovie.getId() == id )
+               return selectMovie;
+       }
+        return null;
+    }
+
+    @Override
+    public Movie findByName(String name) {
+        List<Movie> allMovie = movieRepository.findAllMovies();
+
+        for(Movie selectMovie: allMovie){
+            if(selectMovie.getName().equals(name))
+                return selectMovie;
+        }
+        return null;
+    }
+
+
 }

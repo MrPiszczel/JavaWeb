@@ -2,43 +2,252 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-
     <title>Movie Store</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css" th:href="@{/css/index.css}"/>
+
 </head>
 <body>
 
+<button class="changeStyleBackground">Black</button>
+
 <h2>Movie Store Application</h2>
 
-Hello!
+<button>All</button>
+<button>Watching</button>
+<button>Watched</button>
+ <!--change sides after click-->
 
+    <form action="addMovie">
+        <input type="submit" value="add movie">
+    </form>
+
+
+<h2>Watching</h2>
+<table class="table1" id="myTable" border="1" width="350">
+    <tr>
+        <th width="50" valign="top">
+            <a>Id</a>
+            <button onclick="sortTable(0)">Sort</button>
+        </th>
+        <th width="200">
+            <a>Name</a>
+            <button onclick="sortTable(1)">Sort</button>
+        </th>
+        <th width="100">
+            <a>Scored</a>
+            <button onclick="sortTable(2)">Sort</button>
+        </th>
+        <th witdth="100">
+            <a>Edit</a>
+        </th>
+        <th witdth="100">
+            <a>Delete</a>
+        </th>
+    </tr>
+
+    <tr th:each="watchingMovie: ${watchingMovie}">
+        <td width="50" th:text="${watchingMovie.id}">
+
+        </td>
+
+        <td width="200" th:text="${watchingMovie.name}">
+
+        </td>
+
+        <td width="100" th:text="${watchingMovie.rate}">
+
+        </td>
+
+        <td>
+            <a th:href="@{/edit/{id}/(id=${watchingMovie.id})}">Edit</a>
+        </td>
+
+        <td>
+            <a>Delete</a>
+        </td>
+
+    </tr>
+
+</table>
+
+<h2>Watched</h2>
 <table border="1" width="350">
     <tr>
-        <td width="50" valign="top">
+        <th width="50" valign="top">
             <a>Id</a>
-        </td>
-        <td width="200">
+            <button onclick="sortTable(0)">Sort</button>
+        </th>
+        <th width="200">
             <a>Name</a>
-        </td>
-        <td width="100">
+            <button onclick="sortTable(1)">Sort</button>
+        </th>
+        <th width="100">
             <a>Scored</a>
-        </td>
+            <button onclick="sortTable(2)">Sort</button>
+        </th>
+        <th witdth="100">
+            <a>Edit</a>
+        </th>
+        <th witdth="100">
+            <a>Delete</a>
+        </th>
     </tr>
-    <tr th:each="movie: ${allMovie}">
-        <td width="50" th:text="${movie.id}">
+
+    <tr th:each="watchedMovie: ${watchedMovie}">
+        <td width="50" th:text="${watchedMovie.id}">
 
         </td>
-        <td width="200" th:text="${movie.name}">
+
+        <td width="200" th:text="${watchedMovie.name}">
 
         </td>
-        <td width="100" th:text="${movie.rate}">
 
+        <td width="100" th:text="${watchedMovie.rate}">
+
+        </td>
+
+        <td>
+            <a th:href="@{/edit/{id}/(id=${watchedMovie.id})}">Edit</a>
+        </td>
+
+        <td>
+            <a>Delete</a>
         </td>
     </tr>
 </table>
 
-<form action="addMovie">
-    <input type="submit" value="add movie">
-</form>
+<h2>Plan to Watch</h2>
+
+<table border="1" width="350">
+    <tr>
+        <th width="50" valign="top">
+            <a>Id</a>
+            <button onclick="sortTable(0)">Sort</button>
+        </th>
+        <th width="200">
+            <a>Name</a>
+            <button onclick="sortTable(1)">Sort</button>
+        </th>
+        <th width="100">
+            <a>Scored</a>
+            <button onclick="sortTable(2)">Sort</button>
+        </th>
+        <th witdth="100">
+            <a>Edit</a>
+        </th>
+        <th witdth="100">
+            <a>Delete</a>
+        </th>
+    </tr>
+
+    <tr th:each="planToWatchMovie: ${planToWatchMovie}">
+        <td width="50" th:text="${planToWatchMovie.id}">
+
+        </td>
+
+        <td width="200" th:text="${planToWatchMovie.name}">
+
+        </td>
+
+        <td width="100" th:text="${planToWatchMovie.rate}">
+
+        </td>
+
+        <td>
+            <a th:href="@{/edit/{id}/(id=${planToWatchMovie.id})}">Edit</a>
+        </td>
+
+        <td>
+            <a>Delete</a>
+        </td>
+</table>
+
+
+<h2>Dropped</h2>
+<table border="1" width="350">
+    <tr>
+        <th width="50" valign="top">
+            <a>Id</a>
+            <button onclick="sortTable(0)">Sort</button>
+        </th>
+        <th width="200">
+            <a>Name</a>
+            <button onclick="sortTable(1)">Sort</button>
+        </th>
+        <th width="100">
+            <a>Scored</a>
+            <button onclick="sortTable(2)">Sort</button>
+        </th>
+        <th witdth="100">
+            <a>Edit</a>
+        </th>
+        <th witdth="100">
+            <a>Delete</a>
+        </th>
+    </tr>
+
+    <tr th:each="droppedMovie: ${droppedMovie}">
+        <td width="50" th:text="${droppedMovie.id}">
+
+        </td>
+
+        <td width="200" th:text="${droppedMovie.name}">
+
+        </td>
+
+        <td width="100" th:text="${droppedMovie.rate}">
+
+        </td>
+
+        <td>
+            <a th:href="@{/edit/{id}/(id=${droppedMovie.id})}">Edit</a>
+        </td>
+
+        <td>
+            <a>Delete</a>
+        </td>
+    </tr>
+</table>
+
+<script>
+<!--function sortTable(number) {-->
+  <!--var table, rows, switching, i, x, y, shouldSwitch;-->
+  <!--table = document.getElementById("myTable");-->
+  <!--switching = true;-->
+
+  <!--while (switching) {-->
+
+    <!--switching = false;-->
+    <!--rows = table.getElementsByTagName("TR");-->
+
+    <!--for (i = 1; i < (rows.length - 1); i++) {-->
+
+      <!--shouldSwitch = false;-->
+
+      <!--x = rows[i].getElementsByTagName("TD")[number];-->
+      <!--console.log(x);-->
+      <!--y = rows[i + 1].getElementsByTagName("TD")[number];-->
+      <!--console.log(y);-->
+
+      <!--if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {-->
+
+        <!--shouldSwitch = true;-->
+        <!--break;-->
+      <!--}-->
+    <!--}-->
+    <!--if (shouldSwitch) {-->
+
+      <!--rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);-->
+      <!--switching = true;-->
+    <!--}-->
+  <!--}-->
+
+
+}
+
+</script>
+
 
 </body>
 </html>

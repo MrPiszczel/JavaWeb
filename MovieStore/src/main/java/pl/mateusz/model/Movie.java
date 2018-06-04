@@ -15,6 +15,8 @@ public class Movie {
 
     private int rate;
 
+    private String status;
+
     public int getId() {
         return id;
     }
@@ -37,5 +39,13 @@ public class Movie {
 
     public void setRate(int rate) {
         this.rate = rate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
