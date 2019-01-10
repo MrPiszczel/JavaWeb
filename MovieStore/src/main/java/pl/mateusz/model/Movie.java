@@ -3,6 +3,8 @@ package pl.mateusz.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Movie {
@@ -11,6 +13,8 @@ public class Movie {
     @GeneratedValue
     private int id;
 
+//    @NotNull
+//    @Size(min=5, max=50)
     private String name;
 
     private int rate;

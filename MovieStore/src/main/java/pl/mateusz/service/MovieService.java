@@ -15,4 +15,6 @@ public interface MovieService {
     Movie findById(int id);
 
     Movie findByName(String name);
+
+    void deleteMovieByName(Movie movie);
 }

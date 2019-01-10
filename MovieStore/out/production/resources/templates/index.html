@@ -4,27 +4,69 @@
     <meta charset="UTF-8">
     <title>Movie Store</title>
 
-    <link rel="stylesheet" type="text/css" href="../static/css/index.css" th:href="@{/css/index.css}"/>
+    <link href="../static/css/index.css" th:href="@{/css/index.css}" rel="stylesheet" />
+    <!--<script type="text/javascript" th:src="@{/js/index.js}"/>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
 <body>
 
-<button class="changeStyleBackground">Black</button>
-
-<h2>Movie Store Application</h2>
-
-<button>All</button>
-<button>Watching</button>
-<button>Watched</button>
- <!--change sides after click-->
-
-    <form action="addMovie">
-        <input type="submit" value="add movie">
-    </form>
 
 
-<h2>Watching</h2>
-<table class="table1" id="myTable" border="1" width="350">
+        <label for='show-menu' class='show-menu'>Show Menu</label>
+        <input type='checkbox' id='show-menu' role='button' >
+
+        <ul id='menu'>
+            <li id="special"><a>All</a>
+
+            </li>
+            <li class="option">
+                <a th:href="@{/watchingMovie}">Watching</a>
+            </li>
+            <li class="option">
+                <a  th:href="@{/watchedMovie}">Watched</a>
+            </li>
+            <li>
+                <a th:href="@{/addMovie}">Add movie</a>
+            </li>
+        </ul>
+
+    <!--<ul id = 'menu'>-->
+
+        <!--<li><a href='#'>Home</a></li>-->
+        <!--<li><a href='#'>About</a>-->
+
+
+            <!--<ul class='hidden'>-->
+                <!--<li><a href='#'>who we are</a></li>-->
+                <!--<li><a href='#'>what we do</a></li>-->
+
+            <!--</ul>-->
+
+
+
+        <!--<li><a href='#'>Portfolio</a>-->
+            <!--<ul class='hidden'>-->
+                <!--<li><a href='#'>Photograph</a></li>-->
+                <!--<li><a href='#'>Web &amp; User Interface Design</a></li>-->
+                <!--<li><a href='#'>Illustration</a></li>-->
+            <!--</ul>-->
+        <!--</li>-->
+
+        <!--<li><a href='#'>News</a></li>-->
+        <!--<li><a href='#'>Contact</a></li>-->
+    <!--</ul>-->
+
+<!--<div id="button">-->
+    <!--<form action="/addMovie">-->
+        <!--<input type="submit" value="add movie">-->
+    <!--</form>-->
+<!--</div>-->
+
+<div id="tables">
+    <h2>Watching</h2>
+    <table class="table" id="myTable" border="1" width="350">
+
     <tr>
         <th width="50" valign="top">
             <a>Id</a>
@@ -47,7 +89,7 @@
     </tr>
 
     <tr th:each="watchingMovie: ${watchingMovie}">
-        <td width="50" th:text="${watchingMovie.id}">
+        <td width="50" th:text="${watchingMovie.id}" id="slot">
 
         </td>
 
@@ -64,15 +106,17 @@
         </td>
 
         <td>
-            <a>Delete</a>
+            <a href="#" th:href="@{/delete/{id}/(id=${watchingMovie.id})}" >Delete</a>
         </td>
 
     </tr>
 
 </table>
 
-<h2>Watched</h2>
-<table border="1" width="350">
+
+<table class="table" border="1" width="350" id="table2">
+    <h2>Watched</h2>
+
     <tr>
         <th width="50" valign="top">
             <a>Id</a>
@@ -112,14 +156,16 @@
         </td>
 
         <td>
-            <a>Delete</a>
+            <a th:href="@{/delete/{id}/(id=${watchedMovie.id})}">Delete</a>
         </td>
     </tr>
 </table>
 
-<h2>Plan to Watch</h2>
 
-<table border="1" width="350">
+
+<table class="table" border="1" width="350" id="table3">
+    <h2>Plan to Watch</h2>
+
     <tr>
         <th width="50" valign="top">
             <a>Id</a>
@@ -137,7 +183,7 @@
             <a>Edit</a>
         </th>
         <th witdth="100">
-            <a>Delete</a>
+            <a >Delete</a>
         </th>
     </tr>
 
@@ -159,13 +205,14 @@
         </td>
 
         <td>
-            <a>Delete</a>
+            <a th:href="@{/delete/{id}/(id=${planToWatchMovie.id})}">Delete</a>
         </td>
 </table>
 
 
-<h2>Dropped</h2>
-<table border="1" width="350">
+
+<table class="table" border="1" width="350">
+    <h2>Dropped</h2>
     <tr>
         <th width="50" valign="top">
             <a>Id</a>
@@ -205,48 +252,12 @@
         </td>
 
         <td>
-            <a>Delete</a>
+            <a th:href="@{/delete/{id}/(id=${droppedMovie.id})}">Delete</a>
         </td>
     </tr>
+
 </table>
-
-<script>
-<!--function sortTable(number) {-->
-  <!--var table, rows, switching, i, x, y, shouldSwitch;-->
-  <!--table = document.getElementById("myTable");-->
-  <!--switching = true;-->
-
-  <!--while (switching) {-->
-
-    <!--switching = false;-->
-    <!--rows = table.getElementsByTagName("TR");-->
-
-    <!--for (i = 1; i < (rows.length - 1); i++) {-->
-
-      <!--shouldSwitch = false;-->
-
-      <!--x = rows[i].getElementsByTagName("TD")[number];-->
-      <!--console.log(x);-->
-      <!--y = rows[i + 1].getElementsByTagName("TD")[number];-->
-      <!--console.log(y);-->
-
-      <!--if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {-->
-
-        <!--shouldSwitch = true;-->
-        <!--break;-->
-      <!--}-->
-    <!--}-->
-    <!--if (shouldSwitch) {-->
-
-      <!--rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);-->
-      <!--switching = true;-->
-    <!--}-->
-  <!--}-->
-
-
-}
-
-</script>
+</div>
 
 
 </body>

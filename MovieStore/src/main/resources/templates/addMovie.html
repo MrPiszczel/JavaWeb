@@ -7,13 +7,15 @@
 </head>
 <body>
 
-<form action="saveMovie">
+<form action="saveMovie" th:object="${movie}">
     <table>
         <tr>
             <td>Name</td>
-            <td>
-                <input type="text" name="name">
+            <td><!--name="name" th:field="*{confirmName}"-->
+               <input type="text" name="name" >
             </td>
+
+            <!--<td th:if="${#fields.hasErrors('name')}">NameError</td>-->
         </tr>
         <tr>
             <td>Score</td>
